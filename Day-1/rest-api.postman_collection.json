@@ -1,0 +1,111 @@
+{
+	"variables": [],
+	"info": {
+		"name": "rest-api",
+		"_postman_id": "090805a8-262a-1357-4560-3b4c3f817e4a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all friends",
+			"request": {
+				"url": "http://localhost:3000/api/friends",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Pop\",\n    \"lastName\": \"Corn\",\n    \"email\": \"pf@b.d\",\n    \"password\": \"supersecret\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get one friend",
+			"request": {
+				"url": "http://localhost:3000/api/friends/pp@b.dk",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Pop\",\n    \"lastName\": \"Corn\",\n    \"email\": \"pf@b.d\",\n    \"password\": \"supersecret\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post a friend",
+			"request": {
+				"url": "http://localhost:3000/api/friends",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Pop\",\n    \"lastName\": \"Corn\",\n    \"email\": \"pc@b.dk\",\n    \"password\": \"supersecret\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update a friend",
+			"request": {
+				"url": "http://localhost:3000/api/friends/id3",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Pip\",\n    \"lastName\": \"Fugl\",\n    \"email\": \"pf@b.dk\",\n    \"password\": \"supersecret\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a friend",
+			"request": {
+				"url": "http://localhost:3000/api/friends/pf@b.dk",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Pip\",\n    \"lastName\": \"Fugl\",\n    \"email\": \"pf@b.dk\",\n    \"password\": \"supersecret\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
