@@ -1,0 +1,46 @@
+
+How to, dynamically, assign a port number via an environment variable?
+
+In terminal (bash):
+export PORT=5000
+Or in Windows terminal:
+set PORT=5000
+
+In code:
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening on port ${port}...`));
+--------------------------------------------------------------------------------------------
+How to use nodemon, to dynamically restart the server, whenever we make changes to our code?
+
+Install global:
+	npm i -g nodemon
+To use ex:
+	nodemon index.js
+--------------------------------------------------------------------------------------------
+How to read request parameters (/:id)?
+
+To use ex:
+app.get('/api/courses/:id', (req, res) => {
+    res.send(req.params.id);
+});
+--------------------------------------------------------------------------------------------
+How to read query parameters (/?sort=asc)?
+
+In browser:
+http://localhost:5000/api/posts/2018/2?sort=asc
+
+In code:
+app.get('/api/posts/:year/:month', (req, res) => {
+    res.send(req.query); // use query
+});
+--------------------------------------------------------------------------------------------
+How to read the request body (typically for POST or PUT)?
+
+In browser:
+http://localhost:5000/api/posts/2018/2
+
+In code:
+app.get('/api/posts/:year/:month', (req, res) => {
+    res.send(req.params);
+});
+--------------------------------------------------------------------------------------------
