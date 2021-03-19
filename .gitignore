@@ -3,6 +3,5 @@ node_modules
 build
 
 # ignore all logs files
-logs/*
+[Ll]ogs/
 
-.keep
