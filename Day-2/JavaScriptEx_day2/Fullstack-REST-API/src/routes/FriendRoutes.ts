@@ -1,23 +1,61 @@
 import express from "express";
 import { Router } from "express"
 const router = Router();
-
+import { ApiError } from "../errors/apiError"
 import facade from "../facades/DummyDB-Facade";
 import { IFriend } from '../interfaces/IFriend';
 const Joi = require('joi');
+import authMiddleware from "../middleware/basic-auth";
+router.use(authMiddleware)
 
 router.use(express.json());
 
 router.get("/", async (req, res) => {
     const friends = await facade.getAllFriends();
-    res.json(friends);
+    const friendsDTO = friends.map(friend => {
+        const { firstName, lastName, email } = friend; // destructuring object
+        return { firstName: firstName, lastName, email }; // return new object
+    });
+    res.json(friendsDTO);
 });
 
-router.get("/:email", async (req, res) => {
-    const friend = await facade.getFriend(req.params.email);
-    if (!friend) return res.status(404).send('The friend with the given EMAIL was not found');
-    res.json(friend);
-});
+
+router.get("/:email", async (req, res, next) => {
+    const emailId = req.params.email;
+    try {
+        const friend = await facade.getFriend(emailId);
+
+        if (friend == null) {
+            return next(new ApiError(`user: ${emailId} was not found`, 404))
+        }
+
+        const { firstName, lastName, email } = friend;
+        const friendDTO = { firstName, lastName, email }
+        res.json(friendDTO);
+    } catch (err) {
+        next(err)
+    }
+})
+
+
+//Secure login for user
+router.get("/user/me", async (req:any, res, next) => {
+    const emailId = req.credentials.userName;
+    try {
+        const friend = await facade.getFriend(emailId);
+
+        if (friend == null) {
+            return next(new ApiError(`user: ${emailId} was not found`, 404))
+        }
+
+        const { firstName, lastName, email } = friend;
+        const friendDTO = { firstName, lastName, email }
+        res.json(friendDTO);
+    } catch (err) {
+        next(err)
+    }
+})
+
 
 router.post("/", async (req, res) => {
     const friends = await facade.getAllFriends();
