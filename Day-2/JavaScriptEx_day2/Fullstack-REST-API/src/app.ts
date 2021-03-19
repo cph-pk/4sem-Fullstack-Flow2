@@ -7,7 +7,6 @@ const app = express();
 import { Request, Response } from "express";
 import { ApiError } from "./errors/apiError";
 import simpleLogger from "./middleware/simpleLogger";
-
 // import myCors from "./middleware/myCors";
 // app.use(myCors);
 
