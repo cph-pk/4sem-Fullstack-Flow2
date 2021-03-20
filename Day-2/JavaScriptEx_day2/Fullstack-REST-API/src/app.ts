@@ -33,6 +33,7 @@ app.get("/demo", (req, res) => {
     res.send("Server is up");
 })
 
+
 // Default 404 handlers for api-requests
 app.use("/api", (req, res, next) => {
     res.status(404).json({ errorCode: 404, msg: "not found" })
