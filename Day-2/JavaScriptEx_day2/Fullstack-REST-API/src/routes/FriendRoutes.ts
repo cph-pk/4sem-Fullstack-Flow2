@@ -46,7 +46,7 @@ router.get("/:email", async (req, res, next) => {
 })
 
 
-//Secure login for user
+//Secure login 'se whitch user is logged in'
 router.get("/user/me", async (req: any, res, next) => {
     const emailId = req.credentials.userName;
     try {
