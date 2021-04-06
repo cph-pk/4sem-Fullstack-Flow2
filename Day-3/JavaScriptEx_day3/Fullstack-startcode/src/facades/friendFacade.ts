@@ -43,7 +43,8 @@ class FriendsFacade {
           lastName: f.lastName,
           email: f.email,
           password: f.password,
-          role: "user"
+          role: "user",
+          createTime: new Date()
         }
       )
 
